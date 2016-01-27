@@ -103,9 +103,12 @@ a img {
 	}
 }
 
-.wpview-wrap iframe {
-	display: block;
+.wpview-wrap iframe:not(.wpview-type-video) {
 	width: 100%;
+}
+
+.wpview-wrap iframe {
+  display: block;
 }
 
 blockquote {
