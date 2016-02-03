@@ -55,7 +55,7 @@ var plans = [
 	},
 	"product_slug":"business-bundle",
 	"tagline":"Build a great website",
-	"shortdesc":"All you need to build a great website: live chat support, unlimited premium themes, easy ecommerce, unlimited storage, and a custom domain name.",
+	"shortdesc":"All you need to build a great website: live chat support, unlimited premium themes, unlimited storage, and a custom domain name.",
 	"description":"All you need to build a great website:<ul><li>Chat live with a WordPress.com specialist, Monday to Friday between 7am and 7pm Eastern time.<\/li><li>Try any premium theme and change as often as you like, no extra charge.<\/li><li>Upload all the video and audio files you want with unlimited storage.<\/li><\/ul>Including all the features of WordPress.com Premium:<ul><li>A domain of your choice to replace your site\u2019s default address<\/li><li>Custom Design to customize your site\u2019s appearance and choose unique fonts and colors<\/li><li>VideoPress to embed beautiful HD video straight from your dashboard or from your mobile device<\/li><li>Hides all ads on your site<\/li><\/ul>",
 	"capability":"manage_options",
 	"cost":299,
