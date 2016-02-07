@@ -21,38 +21,38 @@ class WpVideoView extends Component {
 
 	getVideoAttributes( videopress_guid ) {
 		if ( this.props.media ) {
-			return find( this.props.media, m => MediaUtils.isVideoPressItem( m ) && m.videopress_guid === videopress_guid );
+			return find( this.props.media, item => MediaUtils.isVideoPressItem( item ) && item.videopress_guid === videopress_guid );
 		}
 	}
 
-	constrainVideoDimensions( width, height, videoWidth, videoHeight ) {
+	constrainVideoDimensions( shortcodeWidthAttribute, shortcodeHeightAttribute, videoWidth, videoHeight ) {
 		const defaultWidth = 640;
 		const defaultAspectRatio = 16 / 9;
 		const aspectRatio = videoWidth && videoHeight ? videoWidth / videoHeight : defaultAspectRatio;
-		let w = defaultWidth,
-			h = defaultWidth / defaultAspectRatio;
+		let width = defaultWidth,
+			height = defaultWidth / defaultAspectRatio;
 
-		if ( width && ! height ) {
-			w = width;
-			h = width / aspectRatio;
-		} else if ( ! width && height ) {
-			w = height * aspectRatio;
-			h = height;
-		} else if ( width && height ) {
-			const definedAspectRatio = width / height;
+		if ( shortcodeWidthAttribute && ! shortcodeHeightAttribute ) {
+			width = shortcodeWidthAttribute;
+			height = shortcodeWidthAttribute / aspectRatio;
+		} else if ( ! shortcodeWidthAttribute && shortcodeHeightAttribute ) {
+			width = shortcodeHeightAttribute * aspectRatio;
+			height = shortcodeHeightAttribute;
+		} else if ( shortcodeWidthAttribute && shortcodeHeightAttribute ) {
+			const definedAspectRatio = shortcodeWidthAttribute / shortcodeHeightAttribute;
 			if ( definedAspectRatio > aspectRatio ) {
-				w = height * aspectRatio;
-				h = height;
+				width = shortcodeHeightAttribute * aspectRatio;
+				height = shortcodeHeightAttribute;
 			} else {
-				w = width;
-				h = width / aspectRatio;
+				width = shortcodeWidthAttribute;
+				height = shortcodeWidthAttribute / aspectRatio;
 			}
 		} else if ( videoWidth && videoHeight ) {
-			w = videoWidth;
-			h = videoHeight;
+			width = videoWidth;
+			height = videoHeight;
 		}
 
-		return { width: w, height: h };
+		return { width, height };
 	}
 
 	getShortCodeAttributes() {
@@ -80,7 +80,7 @@ class WpVideoView extends Component {
 			defaultLangCode: namedAttrs.defaultlangcode
 		};
 
-		return omit( attrs, ( v, k ) => defaultAttrValues[k] === v );
+		return omit( attrs, ( value, key ) => defaultAttrValues[key] === value );
 	}
 
 	getEmbedUrl( attrs ) {
