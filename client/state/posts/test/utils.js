@@ -43,6 +43,14 @@ describe( 'utils', () => {
 
 			expect( serializedQuery ).to.equal( '{"search":"hello"}' );
 		} );
+
+		it( 'should include site ID if specified', () => {
+			const serializedQuery = getSerializedPostsQuery( {
+				search: 'HeLlO'
+			}, 2916284 );
+
+			expect( serializedQuery ).to.equal( '{"search":"hello","siteid":2916284}' );
+		} );
 	} );
 
 	describe( '#getSerializedPostsQueryWithoutPage()', () => {
@@ -62,6 +70,15 @@ describe( 'utils', () => {
 			} );
 
 			expect( serializedQuery ).to.equal( '{"search":"hello"}' );
+		} );
+
+		it( 'should include site ID if specified', () => {
+			const serializedQuery = getSerializedPostsQueryWithoutPage( {
+				search: 'HeLlO',
+				page: 2
+			}, 2916284 );
+
+			expect( serializedQuery ).to.equal( '{"search":"hello","siteid":2916284}' );
 		} );
 	} );
 } );
