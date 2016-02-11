@@ -133,7 +133,7 @@ const Checkout = React.createClass( {
 			return `/plans/${ this.props.sites.getSelectedSite().slug }/thank-you`;
 		}
 
-		return '/checkout/thank-you';
+		return `/checkout/${ this.props.sites.getSelectedSite().slug }/thank-you`;
 	},
 
 	content: function() {
