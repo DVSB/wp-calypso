@@ -278,7 +278,6 @@ module.exports = function() {
 		page(
 			'/checkout/:site/:receipt_id/thank-you',
 			controller.siteSelection,
-			upgradesController.redirectIfThemePurchased,
 			upgradesController.checkoutThankYou
 		);
 
