@@ -114,7 +114,7 @@ export function requestSitePost( siteId, postId ) {
 
 /**
  * Returns a function which, when invoked, triggers a network request to fetch
- * posts for the specified query.
+ * posts across all of the current user's sites for the specified query.
  *
  * @param  {String}   query Post query
  * @return {Function}       Action thunk
