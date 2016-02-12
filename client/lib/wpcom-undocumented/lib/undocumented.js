@@ -1876,6 +1876,16 @@ Undocumented.prototype.startExport = function( siteId, advancedSettings, fn ) {
 	}, advancedSettings, fn );
 };
 
+/*
+ * Get video information
+ *
+ * @param {String}    guid              VideoPress guid
+ * @param {Function}  callback          Callback function
+ */
+Undocumented.prototype.videos = function( guid, callback ) {
+	this.wpcom.req.get( { path: '/videos/' + guid }, callback );
+};
+
 /**
  * Expose `Undocumented` module
  */

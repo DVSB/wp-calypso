@@ -8,7 +8,8 @@ const debug = debugFactory( 'calypso:sync-handler:whitelist' );
 const whitelist = [
 	/^\/me\/posts$/,
 	/^\/me\/settings/,
-	/^\/sites\/[\w.]+\/posts/
+	/^\/sites\/[\w.]+\/posts/,
+	/^\/videos/
 ];
 
 export const isWhitelisted = params => {
