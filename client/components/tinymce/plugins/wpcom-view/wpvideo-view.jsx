@@ -35,10 +35,6 @@ class WpVideoView extends Component {
 		return encodeURIComponent( content );
 	}
 
-	constructor( props ) {
-		super( props );
-	}
-
 	constrainVideoDimensions( shortcodeWidthAttribute, shortcodeHeightAttribute ) {
 		const defaultWidth = 640;
 		const defaultAspectRatio = 16 / 9;
