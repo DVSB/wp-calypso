@@ -28,7 +28,7 @@ class WpVideoView extends Component {
 
 export default connect( ( state, props ) => {
 	return {
-		video: getVideo(state, props.guid)
+		video: getVideo( state, props.guid )
 	};
 } )( WpVideoView );
 ```
