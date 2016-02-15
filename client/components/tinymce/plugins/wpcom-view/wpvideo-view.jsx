@@ -122,14 +122,8 @@ class WpVideoView extends Component {
 }
 
 WpVideoView.propTypes = {
-	siteId: PropTypes.number,
 	content: PropTypes.string,
-	onResize: PropTypes.func,
 	video: PropTypes.object
-};
-
-WpVideoView.defaultProps = {
-	onResize: () => {}
 };
 
 export default connect( ( state, props ) => {
