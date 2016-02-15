@@ -43,7 +43,7 @@ QueryVideo.defaultProps = {
 
 export default connect(
 	( state, props ) => {
-		const { guid } = props;
+		const guid = props.guid;
 		return {
 			fetchingVideo: isFetchingVideo( state, guid )
 		};
