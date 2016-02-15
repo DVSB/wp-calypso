@@ -42,6 +42,7 @@ var config = require( 'config' ),
 	setRouteAction = require( 'state/notices/actions' ).setRoute,
 	accessibleFocus = require( 'lib/accessible-focus' ),
 	TitleStore = require( 'lib/screen-title/store' ),
+	syncHandler = require( 'lib/wp/sync-handler' ),
 	renderWithReduxStore = require( 'lib/react-helpers' ).renderWithReduxStore,
 	// The following components require the i18n mixin, so must be required after i18n is initialized
 	Layout;
@@ -50,6 +51,9 @@ function init() {
 	var i18nLocaleStringsObject = null;
 
 	debug( 'Starting Calypso. Let\'s do this.' );
+
+	// prune sync-handler records
+	syncHandler.pruneRecordsFrom();
 
 	// Initialize i18n
 	if ( window.i18nLocaleStrings ) {
