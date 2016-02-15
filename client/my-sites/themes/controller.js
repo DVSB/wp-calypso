@@ -14,6 +14,7 @@ import SingleSiteComponent from 'my-sites/themes/single-site';
 import MultiSiteComponent from 'my-sites/themes/multi-site';
 import LoggedOutComponent from 'my-sites/themes/logged-out';
 import { ThemeSheet as ThemeSheetComponent } from 'my-sites/themes/sheet';
+import ThemeDetailsComponent from 'components/data/theme-details';
 import analytics from 'analytics';
 import i18n from 'lib/mixins/i18n';
 import trackScrollPage from 'lib/track-scroll-page';
@@ -133,7 +134,16 @@ export function details( context, next ) {
 	// When we're logged in, we need to remove the sidebar.
 	ReactDom.unmountComponentAtNode( document.getElementById( 'secondary' ) );
 
-	context.primary = makeElement( ThemeSheetComponent, Head, context.store, props );
+	//TODO: use makeElement()
+	context.primary = (
+		<ReduxProvider store={ context.store } >
+			<Head title={ props.title } isSheet>
+				<ThemeDetailsComponent id={ props.themeSlug } >
+					<ThemeSheetComponent />
+				</ThemeDetailsComponent>
+			</Head>
+		</ReduxProvider>
+	);
 	next();
 }
 
