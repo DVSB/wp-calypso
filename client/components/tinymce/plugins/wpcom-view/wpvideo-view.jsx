@@ -38,7 +38,12 @@ class WpVideoView extends Component {
 	constrainVideoDimensions( shortcodeWidthAttribute, shortcodeHeightAttribute ) {
 		const defaultWidth = 640;
 		const defaultAspectRatio = 16 / 9;
-		let { width, height } = this.props.video ? this.props.video : { width: defaultWidth, height: defaultWidth / defaultAspectRatio };
+		let { width, height } = this.props.video
+			? this.props.video
+			: {
+				width: defaultWidth,
+				height: defaultWidth / defaultAspectRatio
+			};
 		const aspectRatio = width / height;
 
 		if ( shortcodeWidthAttribute && ! shortcodeHeightAttribute ) {
@@ -65,7 +70,10 @@ class WpVideoView extends Component {
 		const shortcode = shortcodeUtils.parse( this.props.content );
 		const namedAttrs = shortcode.attrs.named;
 
-		const videoDimensions = this.constrainVideoDimensions( parseInt( namedAttrs.w, 10 ), parseInt( namedAttrs.h, 10 ) );
+		const videoDimensions = this.constrainVideoDimensions(
+			parseInt( namedAttrs.w, 10 ),
+			parseInt( namedAttrs.h, 10 )
+		);
 
 		const shortcodeAttributes = {
 			guid: shortcode.attrs.numeric[0],
@@ -78,13 +86,20 @@ class WpVideoView extends Component {
 			defaultLangCode: namedAttrs.defaultlangcode
 		};
 
-		return Object.assign( {}, pick( shortcodeAttributes, ['guid', 'w', 'h'] ), { embedUrl: this.getEmbedUrl( shortcodeAttributes ) } );
+		return Object.assign(
+			{},
+			pick( shortcodeAttributes, ['guid', 'w', 'h'] ),
+			{ embedUrl: this.getEmbedUrl( shortcodeAttributes ) }
+		);
 	}
 
 	getEmbedUrl( shortcodeAttributes ) {
 		const defaultAttributeValues = { hd: false, at: 0, defaultLangCode: undefined };
-		const attributesWithNonDefaultValues = omit( shortcodeAttributes, ( value, key ) => defaultAttributeValues[key] === value );
-		const queryString = QueryString.stringify( pick( attributesWithNonDefaultValues, ['autoplay', 'hd', 'loop', 'at', 'defaultLangCode'] ) );
+		const attributesWithNonDefaultValues = omit(
+			shortcodeAttributes,
+			( value, key ) => defaultAttributeValues[key] === value );
+		const queryStringAttributes = ['autoplay', 'hd', 'loop', 'at', 'defaultLangCode'];
+		const queryString = QueryString.stringify( pick( attributesWithNonDefaultValues, queryStringAttributes ) );
 
 		return `https://videopress.com/embed/${ shortcodeAttributes.guid }?${ queryString }`;
 	}
