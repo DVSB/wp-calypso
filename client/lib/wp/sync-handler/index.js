@@ -2,19 +2,22 @@
  * External dependencies
  */
 import Hashes from 'jshashes';
-import warn from 'lib/warn';
-import { isWhitelisted } from './whitelist-handler';
+import debugFactory from 'debug';
+
 /**
  * Internal dependencies
  */
-import debugFactory from 'debug';
+import warn from 'lib/warn';
 import { getLocalForage } from 'lib/localforage';
+import { isWhitelisted } from './whitelist-handler';
+import { CacheInvalidation} from './cache-invalidation';
 
 /**
  * Module variables
  */
 const localforage = getLocalForage();
 const debug = debugFactory( 'calypso:sync-handler' );
+const cacheInvalidation = new CacheInvalidation();
 
 /**
  * SyncHandler class
@@ -70,7 +73,7 @@ export class SyncHandler {
 						callback( null, localRecord.body );
 					} catch ( error ) {
 						this.removeRecord( key );
-						debug( 'Callback failed with localRecord (%o), deleting record.', localRecord, error );
+						debug( 'Callback failed with localRecord (%o), deleting record', localRecord, error );
 					}
 				} else {
 					debug( 'No data for [%s] %o - %o', reqParams.method, path, reqParams );
@@ -187,13 +190,37 @@ export class SyncHandler {
 		return localforage.getItem( key, fn );
 	}
 
+	/**
+	 * Add/Override a record.
+	 *
+	 * @param {String} key - record key identifier
+	 * @param {Object} data - data to store
+	 * @param {Function} [fn] - callback function
+	 * @return {Promise} natuve ES6 promise
+	 */
 	storeRecord( key, data, fn = () => {} ) {
 		debug( 'storing data in %o key\n', key );
-		return localforage.setItem( key, data, fn );
+
+		// add this record to history
+		return cacheInvalidation
+			.addItem( key )
+			.then( () => {
+				localforage.setItem( key, data, fn );
+			} );
 	}
 
 	removeRecord( key, fn = () => {} ) {
 		debug( 'removing %o key\n', key );
-		return localforage.removeItem( key, fn );
+
+		// add this record to history
+		return cacheInvalidation
+			.removeItem( key )
+			.then( () => {
+				localforage.removeItem( key, fn );
+			} );
 	}
+}
+
+export const pruneRecordsFrom = lifetime => {
+	cacheInvalidation.pruneRecordsFrom( lifetime );
 }
