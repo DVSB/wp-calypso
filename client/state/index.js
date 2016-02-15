@@ -20,6 +20,7 @@ import themes from './themes/reducer';
 import users from './users/reducer';
 import currentUser from './current-user/reducer';
 import ui from './ui/reducer';
+import videos from './videos/reducer';
 
 /**
  * Module variables
@@ -37,7 +38,8 @@ export const reducer = combineReducers( {
 	themes,
 	users,
 	currentUser,
-	ui
+	ui,
+	videos
 } );
 
 let middleware = [ thunkMiddleware ];
