@@ -16,6 +16,7 @@ export const ThemeSheet = React.createClass( {
 	propTypes: {
 		name: React.PropTypes.string,
 		author: React.PropTypes.string,
+		screenshot: React.PropTypes.string,
 	},
 
 	render() {
@@ -26,7 +27,7 @@ export const ThemeSheet = React.createClass( {
 					<span className="themes__sheet-bar-tag">by { this.props.author }</span>
 				</div>
 				<div className="themes__sheet-screenshot">
-					<img className="themes__sheet-img" src="https://i2.wp.com/theme.wordpress.com/wp-content/themes/pub/orvis/screenshot.png?w=680" />
+					<img className="themes__sheet-img" src={ this.props.screenshot + '?=w680' } />
 				</div>
 			</Main>
 		);

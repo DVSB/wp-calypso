@@ -86,7 +86,8 @@ export function fetchThemeDetails( id ) {
 					type: ActionTypes.RECEIVE_THEME_DETAILS,
 					themeId: data.id,
 					themeName: data.name,
-					themeAuthor: data.author
+					themeAuthor: data.author,
+					themeScreenshot: data.screenshot,
 				} );
 			}
 		};
