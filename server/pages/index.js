@@ -18,6 +18,7 @@ var config = require( 'config' ),
 	LayoutLoggedOutDesign = require( 'layout/logged-out-design' ),
 	render = require( 'render' ).render,
 	createReduxStore = require( 'state' ).createReduxStore,
+	i18n = require( 'lib/mixins/i18n' ),
 	setSection = require( 'state/ui/actions' ).setSection;
 
 var HASH_LENGTH = 10,
@@ -40,6 +41,8 @@ sections.forEach( function( section ) {
 		chunksByPath[ path ] = section.name;
 	} );
 } );
+
+i18n.initialize();
 
 /**
  * Generates a hash of a files contents to be used as a version parameter on asset requests.
