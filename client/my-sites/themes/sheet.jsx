@@ -78,11 +78,11 @@ export const ThemeSheet = React.createClass( {
 						<span className="themes__sheet-action-bar-cost">{ this.props.theme.price }</span>
 						<Button secondary >{ i18n.translate( 'Download' ) }</Button>
 						<Button primary icon onClick={ this.onPrimaryClick }><Gridicon icon="checkmark"/>{ actionTitle }</Button>
+						<div className="themes__sheet-screenshot">
+							<img className="themes__sheet-img" src="https://i2.wp.com/theme.wordpress.com/wp-content/themes/pub/orvis/screenshot.png?w=680" />
+						</div>
 					</div>
 				</HeaderCake>
-				<div className="themes__sheet-screenshot">
-					<img className="themes__sheet-img" src="https://i2.wp.com/theme.wordpress.com/wp-content/themes/pub/orvis/screenshot.png?w=680" />
-				</div>
 			</Main>
 		);
 	}
