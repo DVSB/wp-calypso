@@ -417,8 +417,6 @@ audio {
 }
 
 .wpview-type-contact-form {
-	border: 1px solid #87a6bc;
-	border-radius: 3px;
 	padding: 20px;
 	text-align: center;
 }
@@ -428,8 +426,9 @@ audio {
 	height: 40px;
 	font-size: 16px;
 	background: #fff;
-	color: black;
-	border: solid 1px black;
+	color: #2e4453;
+	border: 1px solid #c8d7e1;
+	border-radius: 4px;
 }
 
 .wpview-type-contact-form-field {
@@ -457,6 +456,7 @@ audio {
 	font-size: 16px;
 	padding: 7px 14px;
 	box-sizing: border-box;
+	border: 1px solid #c8d7e1;
 }
 
 .wpview-type-contact-form-field select {
