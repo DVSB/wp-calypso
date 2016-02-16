@@ -46,8 +46,7 @@ var actions = require( 'lib/posts/actions' ),
 	i18n = require( 'lib/mixins/i18n' ),
 	EditorPreview = require( './editor-preview' ),
 	stats = require( 'lib/posts/stats' ),
-	analytics = require( 'analytics' ),
-	postTypesList = require( 'lib/post-types-list')();
+	analytics = require( 'analytics' );
 
 var messages = {
 	post: {
@@ -407,7 +406,6 @@ var PostEditor = React.createClass( {
 								type={ this.props.type }
 								site={ site }
 								post={ this.state.post }
-								postTypes={ postTypesList }
 								isNew={ this.state.isNew }
 							/>
 
