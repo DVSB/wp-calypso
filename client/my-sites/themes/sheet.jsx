@@ -14,7 +14,9 @@ import Main from 'components/main';
 import Gridicon from 'components/gridicon';
 import HeaderCake from 'components/header-cake';
 import Button from 'components/button';
+import { purchase, customize, activate, signup } from 'state/themes/actions';
 import { getThemeById } from 'state/themes/themes/selectors';
+import { getSelectedSite } from 'state/ui/selectors';
 import ThemeHelpers from 'my-sites/themes/helpers';
 import i18n from 'lib/mixins/i18n';
 
@@ -35,6 +37,22 @@ export const ThemeSheet = React.createClass( {
 
 	onBackClick() {
 		page.back();
+	},
+
+	onPrimaryClick() {
+		let action;
+
+		if ( ThemeHelpers.isPremium( this.props.theme ) && ! this.props.theme.purchased && this.props.isLoggedIn ) {
+			action = purchase( this.props.theme, this.props.selectedSite, 'showcase-sheet' );
+		} else if ( this.props.theme.active ) {
+			action = customize( this.props.theme, this.props.selectedSite );
+		} else if ( this.props.isLoggedIn ) {
+			action = activate( this.props.theme, this.props.selectedSite, 'showcase-sheet' );
+		} else {
+			action = signup( this.props.theme );
+		}
+
+		this.props.dispatch( action );
 	},
 
 	render() {
@@ -59,7 +77,7 @@ export const ThemeSheet = React.createClass( {
 					<div className="themes__sheet-action-bar-container">
 						<span className="themes__sheet-action-bar-cost">{ this.props.theme.price }</span>
 						<Button secondary >{ i18n.translate( 'Download' ) }</Button>
-						<Button primary icon ><Gridicon icon="checkmark"/>{ actionTitle }</Button>
+						<Button primary icon onClick={ this.onPrimaryClick }><Gridicon icon="checkmark"/>{ actionTitle }</Button>
 					</div>
 				</HeaderCake>
 				<div className="themes__sheet-screenshot">
@@ -75,6 +93,7 @@ export default connect(
 		props,
 		{
 			theme: getThemeById( state, props.themeSlug ),
+			selectedSite: getSelectedSite( state ) || false,
 		}
 	)
 )( ThemeSheet );
