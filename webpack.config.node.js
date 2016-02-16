@@ -73,7 +73,8 @@ module.exports = {
 	},
 	plugins: [
 		// Require source-map-support at the top, so we get source maps for the bundle
-		new webpack.BannerPlugin( 'require( "source-map-support" ).install();', { raw: true, entryOnly: false } )
+		new webpack.BannerPlugin( 'require( "source-map-support" ).install();', { raw: true, entryOnly: false } ),
+		new webpack.NormalModuleReplacementPlugin( /^analytics$/, 'lodash/utility/noop' ) // noop analytics module until we make it ssr-ready
 	],
 	externals: getExternals()
 };
