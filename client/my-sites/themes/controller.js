@@ -122,7 +122,8 @@ export function details( context, next ) {
 		themeSlug: context.params.slug,
 		title: buildTitle(
 			i18n.translate( 'Theme Details', { textOnly: true } )
-		)
+		),
+		isLoggedIn: !! user
 	}
 
 	context.store.dispatch( setSection( 'themes', {
