@@ -74,7 +74,8 @@ module.exports = {
 	plugins: [
 		// Require source-map-support at the top, so we get source maps for the bundle
 		new webpack.BannerPlugin( 'require( "source-map-support" ).install();', { raw: true, entryOnly: false } ),
-		new webpack.NormalModuleReplacementPlugin( /^analytics$/, 'lodash/utility/noop' )
+		new webpack.NormalModuleReplacementPlugin( /^analytics$/, 'lodash/utility/noop' ),
+		new webpack.NormalModuleReplacementPlugin( /state\/themes\/actions/, 'lodash/utility/noop' )
 	],
 	externals: getExternals()
 };
