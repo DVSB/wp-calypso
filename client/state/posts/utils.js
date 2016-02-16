@@ -28,8 +28,14 @@ export function getNormalizedPostsQuery( query ) {
  * @return {String}        Serialized posts query
  */
 export function getSerializedPostsQuery( query = {}, siteId ) {
-	query = Object.assign( getNormalizedPostsQuery( query ), { siteId } );
-	return JSON.stringify( query ).toLowerCase();
+	const normalizedQuery = getNormalizedPostsQuery( query );
+	const serializedQuery = JSON.stringify( normalizedQuery ).toLowerCase();
+
+	if ( siteId ) {
+		return [ siteId, serializedQuery ].join( ':' );
+	}
+
+	return serializedQuery;
 }
 
 /**

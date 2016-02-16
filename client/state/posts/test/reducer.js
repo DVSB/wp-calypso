@@ -146,7 +146,7 @@ describe( 'reducer', () => {
 			} );
 
 			expect( state ).to.eql( {
-				'{"search":"hello","siteid":2916284}': {
+				'2916284:{"search":"hello"}': {
 					fetching: true
 				}
 			} );
@@ -167,7 +167,7 @@ describe( 'reducer', () => {
 
 		it( 'should preserve previous query results when requesting again', () => {
 			const original = deepFreeze( {
-				'{"search":"hello","siteid":2916284}': {
+				'2916284:{"search":"hello"}': {
 					fetching: false,
 					posts: [ '3d097cb7c5473c169bba0eb8e3c6cb64' ]
 				}
@@ -179,7 +179,7 @@ describe( 'reducer', () => {
 			} );
 
 			expect( state ).to.eql( {
-				'{"search":"hello","siteid":2916284}': {
+				'2916284:{"search":"hello"}': {
 					fetching: true,
 					posts: [ '3d097cb7c5473c169bba0eb8e3c6cb64' ]
 				}
@@ -188,7 +188,7 @@ describe( 'reducer', () => {
 
 		it( 'should accumulate queries', () => {
 			const original = deepFreeze( {
-				'{"search":"hello","siteid":2916284}': {
+				'2916284:{"search":"hello"}': {
 					fetching: true
 				}
 			} );
@@ -199,10 +199,10 @@ describe( 'reducer', () => {
 			} );
 
 			expect( state ).to.eql( {
-				'{"search":"hello","siteid":2916284}': {
+				'2916284:{"search":"hello"}': {
 					fetching: true
 				},
-				'{"search":"hello w","siteid":2916284}': {
+				'2916284:{"search":"hello w"}': {
 					fetching: true
 				}
 			} );
@@ -220,7 +220,7 @@ describe( 'reducer', () => {
 			} );
 
 			expect( state ).to.eql( {
-				'{"search":"hello","siteid":2916284}': {
+				'2916284:{"search":"hello"}': {
 					fetching: false,
 					posts: [ '3d097cb7c5473c169bba0eb8e3c6cb64' ]
 				}
@@ -236,7 +236,7 @@ describe( 'reducer', () => {
 			} );
 
 			expect( state ).to.eql( {
-				'{"search":"hello","siteid":2916284}': {
+				'2916284:{"search":"hello"}': {
 					fetching: false
 				}
 			} );
@@ -244,7 +244,7 @@ describe( 'reducer', () => {
 
 		it( 'never persists state because this is not implemented', () => {
 			const original = deepFreeze( {
-				'{"search":"hello","siteid":2916284}': {
+				'2916284:{"search":"hello"}': {
 					fetching: true
 				}
 			} );
@@ -254,7 +254,7 @@ describe( 'reducer', () => {
 
 		it( 'never loads persisted state because this is not implemented', () => {
 			const original = deepFreeze( {
-				'{"search":"hello","siteid":2916284}': {
+				'2916284:{"search":"hello"}': {
 					fetching: true
 				}
 			} );
@@ -282,7 +282,7 @@ describe( 'reducer', () => {
 			} );
 
 			expect( state ).to.eql( {
-				'{"number":1,"siteid":2916284}': 2
+				'2916284:{"number":1}': 2
 			} );
 		} );
 
@@ -313,7 +313,7 @@ describe( 'reducer', () => {
 			} );
 
 			expect( state ).to.eql( {
-				'{"number":1,"siteid":2916284}': 2
+				'2916284:{"number":1}': 2
 			} );
 		} );
 
@@ -327,13 +327,13 @@ describe( 'reducer', () => {
 			} );
 
 			expect( state ).to.eql( {
-				'{"search":"none","number":1,"siteid":2916284}': 1
+				'2916284:{"search":"none","number":1}': 1
 			} );
 		} );
 
 		it( 'should accumulate site post request success', () => {
 			const original = deepFreeze( {
-				'{"search":"hello","siteid":2916284}': 1
+				'2916284:{"search":"hello"}': 1
 			} );
 			const state = queriesLastPage( original, {
 				type: POSTS_REQUEST_SUCCESS,
@@ -346,14 +346,14 @@ describe( 'reducer', () => {
 			} );
 
 			expect( state ).to.eql( {
-				'{"search":"hello","siteid":2916284}': 1,
-				'{"search":"ribs","siteid":2916284}': 1
+				'2916284:{"search":"hello"}': 1,
+				'2916284:{"search":"ribs"}': 1
 			} );
 		} );
 
 		it( 'never persists state because this is not implemented', () => {
 			const original = deepFreeze( {
-				'{"search":"hello","siteid":2916284}': 1
+				'2916284:{"search":"hello"}': 1
 			} );
 			const state = queriesLastPage( original, { type: SERIALIZE } );
 			expect( state ).to.eql( {} );
@@ -361,7 +361,7 @@ describe( 'reducer', () => {
 
 		it( 'never loads persisted state because this is not implemented', () => {
 			const original = deepFreeze( {
-				'{"search":"hello","siteid":2916284}': 1
+				'2916284:{"search":"hello"}': 1
 			} );
 			const state = queriesLastPage( original, { type: DESERIALIZE } );
 			expect( state ).to.eql( {} );

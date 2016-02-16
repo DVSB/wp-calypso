@@ -89,7 +89,7 @@ describe( 'selectors', () => {
 			const isTracking = isTrackingSitePostsQuery( {
 				posts: {
 					queries: {
-						'{"search":"hel","siteid":2916284}': {
+						'2916284:{"search":"hel"}': {
 							fetching: true
 						}
 					}
@@ -103,7 +103,7 @@ describe( 'selectors', () => {
 			const isTracking = isTrackingSitePostsQuery( {
 				posts: {
 					queries: {
-						'{"search":"hello","siteid":2916284}': {
+						'2916284:{"search":"hello"}': {
 							fetching: true
 						}
 					}
@@ -129,7 +129,7 @@ describe( 'selectors', () => {
 			const sitePosts = getSitePostsForQuery( {
 				posts: {
 					queries: {
-						'{"search":"hello","siteid":2916284}': {
+						'2916284:{"search":"hello"}': {
 							fetching: true
 						}
 					}
@@ -146,7 +146,7 @@ describe( 'selectors', () => {
 						'3d097cb7c5473c169bba0eb8e3c6cb64': { ID: 841, site_ID: 2916284, global_ID: '3d097cb7c5473c169bba0eb8e3c6cb64', title: 'Hello World' }
 					},
 					queries: {
-						'{"search":"hello","siteid":2916284}': {
+						'2916284:{"search":"hello"}': {
 							fetching: false,
 							posts: [ '3d097cb7c5473c169bba0eb8e3c6cb64' ]
 						}
@@ -175,7 +175,7 @@ describe( 'selectors', () => {
 			const isRequesting = isRequestingSitePostsForQuery( {
 				posts: {
 					queries: {
-						'{"search":"hello","siteid":2916284}': {
+						'2916284:{"search":"hello"}': {
 							fetching: false
 						}
 					}
@@ -189,7 +189,7 @@ describe( 'selectors', () => {
 			const isRequesting = isRequestingSitePostsForQuery( {
 				posts: {
 					queries: {
-						'{"search":"hello","siteid":2916284}': {
+						'2916284:{"search":"hello"}': {
 							fetching: true
 						}
 					}
@@ -215,7 +215,7 @@ describe( 'selectors', () => {
 			const lastPage = getSitePostsLastPageForQuery( {
 				posts: {
 					queriesLastPage: {
-						'{"search":"hello","siteid":2916284}': 4
+						'2916284:{"search":"hello"}': 4
 					}
 				}
 			}, 2916284, { search: 'Hello' } );
@@ -227,7 +227,7 @@ describe( 'selectors', () => {
 			const lastPage = getSitePostsLastPageForQuery( {
 				posts: {
 					queriesLastPage: {
-						'{"search":"hello","siteid":2916284}': 4
+						'2916284:{"search":"hello"}': 4
 					}
 				}
 			}, 2916284, { search: 'Hello', page: 3 } );
@@ -251,7 +251,7 @@ describe( 'selectors', () => {
 			const isLastPage = isSitePostsLastPageForQuery( {
 				posts: {
 					queriesLastPage: {
-						'{"search":"hello","siteid":2916284}': 4
+						'2916284:{"search":"hello"}': 4
 					}
 				}
 			}, 2916284, { search: 'Hello', page: 3 } );
@@ -263,7 +263,7 @@ describe( 'selectors', () => {
 			const isLastPage = isSitePostsLastPageForQuery( {
 				posts: {
 					queriesLastPage: {
-						'{"search":"hello","siteid":2916284}': 4
+						'2916284:{"search":"hello"}': 4
 					}
 				}
 			}, 2916284, { search: 'Hello', page: 4 } );
@@ -275,7 +275,7 @@ describe( 'selectors', () => {
 			const isLastPage = isSitePostsLastPageForQuery( {
 				posts: {
 					queriesLastPage: {
-						'{"search":"hello","siteid":2916284}': 1
+						'2916284:{"search":"hello"}': 1
 					}
 				}
 			}, 2916284, { search: 'Hello' } );
@@ -303,17 +303,17 @@ describe( 'selectors', () => {
 						'6c831c187ffef321eb43a67761a525a3': { ID: 413, site_ID: 2916284, global_ID: '6c831c187ffef321eb43a67761a525a3', title: 'Ribs & Chicken' }
 					},
 					queries: {
-						'{"number":1,"siteid":2916284}': {
+						'2916284:{"number":1}': {
 							fetching: false,
 							posts: [ '3d097cb7c5473c169bba0eb8e3c6cb64' ]
 						},
-						'{"number":1,"page":2,"siteid":2916284}': {
+						'2916284:{"number":1,"page":2}': {
 							fetching: false,
 							posts: [ '6c831c187ffef321eb43a67761a525a3' ]
 						}
 					},
 					queriesLastPage: {
-						'{"number":1,"siteid":2916284}': 2
+						'2916284:{"number":1}': 2
 					}
 				}
 			}, 2916284, { search: '', number: 1 } );
