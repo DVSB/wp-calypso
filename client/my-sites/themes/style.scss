@@ -115,6 +115,27 @@
 	box-shadow: 0px 2px 8px 0px rgba(46,68,83,0.45);
 }
 
+.themes__sheet-action-bar {
+	height: 50px;
+}
+
+.themes__sheet-action-bar button {
+	margin: 2px;
+}
+
+.themes__sheet-action-bar-cost {
+	font-weight: 600;
+	color: #4AB866;
+	margin-right: 10px;
+	display: inline-block;
+	max-width: 50%;  
+}
+.themes__sheet-action-bar-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 @include breakpoint( "<660px" ) {
 	.themes__sheet-screenshot {
 		position: relative;
