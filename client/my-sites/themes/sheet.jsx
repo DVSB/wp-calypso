@@ -10,6 +10,8 @@ import { connect } from 'react-redux';
  * Internal dependencies
  */
 import Main from 'components/main';
+import HeaderCake from 'components/header-cake';
+import Button from 'components/button';
 import { getThemeById } from 'state/themes/themes/selectors';
 
 export const ThemeSheet = React.createClass( {
@@ -26,6 +28,11 @@ export const ThemeSheet = React.createClass( {
 					<span className="themes__sheet-bar-title">Pineapple Fifteen</span>
 					<span className="themes__sheet-bar-tag">by Alpha and Omega</span>
 				</div>
+				<HeaderCake onClick={ () => {} }>
+					<span className="themes__sheet-action-bar-cost">$125</span>
+					<Button secondary>Download</Button>
+					<Button primary>Start with this design</Button>
+				</HeaderCake>
 				<div className="themes__sheet-screenshot">
 					<img className="themes__sheet-img" src="https://i2.wp.com/theme.wordpress.com/wp-content/themes/pub/orvis/screenshot.png?w=680" />
 				</div>

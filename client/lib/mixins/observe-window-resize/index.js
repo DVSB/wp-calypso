@@ -1,3 +1,5 @@
+/** @ssr-ready **/
+
 /**
  * External Dependencies
  */
@@ -10,7 +12,7 @@ var throttle = require( 'lodash/function/throttle' );
  * The host should expose a `onWindowResize` method to be called when the window resizes
  */
 var ObserveWindowSizeMixin = {
-	componentWillMount: function() {
+	componentDidMount: function() {
 		// the throttled function has to be per instance
 		this._handleWindowResize = throttle( this.onWindowResize, 100 );
 		window.addEventListener( 'resize', this._handleWindowResize );
