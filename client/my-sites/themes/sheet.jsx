@@ -14,6 +14,10 @@ import Main from 'components/main';
 import Gridicon from 'components/gridicon';
 import HeaderCake from 'components/header-cake';
 import Button from 'components/button';
+import SectionNav from 'components/section-nav';
+import NavTabs from 'components/section-nav/tabs';
+import NavItem from 'components/section-nav/item';
+import Card from 'components/card';
 import { purchase, customize, activate, signup } from 'state/themes/actions';
 import { getThemeById } from 'state/themes/themes/selectors';
 import { getSelectedSite } from 'state/ui/selectors';
@@ -31,6 +35,10 @@ export const ThemeSheet = React.createClass( {
 		return {
 			theme: {
 				price: '$125',
+				description_long: `
+Kitsch four loko deep v, tousled kombucha polaroid gentrify. Kitsch bushwick mixtape, ugh wayfarers artisan YOLO godard direct trade. Post-ironic YOLO helvetica, hammock small batch man bun gastropub ethical forage. Neutra retro swag, chambray polaroid deep v distillery microdosing messenger bag pabst narwhal bitters. Fingerstache retro banh mi mixtape pabst. Tote bag cred everyday carry meh ennui leggings. Austin truffaut marfa, deep v artisan kickstarter fingerstache gentrify typewriter aesthetic meditation pop-up.
+
+Man braid meditation meggings art party occupy kale chips, raw denim aesthetic pop-up portland cred. Cold-pressed godard authentic beard offal, quinoa butcher photo booth. Literally messenger bag waistcoat cliche taxidermy, austin knausgaard freegan. Seitan master cleanse skateboard, pickled mixtape YOLO before they sold out ugh. Authentic actually ethical fanny pack squid, flannel kale chips YOLO humblebrag polaroid franzen. Pitchfork flannel mumblecore food truck. Craft beer fap 90's, heirloom shabby chic typewriter salvia listicle pabst beard tacos sustainable yuccie.`
 			}
 		};
 	},
@@ -83,6 +91,16 @@ export const ThemeSheet = React.createClass( {
 						</div>
 					</div>
 				</HeaderCake>
+				<div className="themes__sheet-content-column">
+					<SectionNav className="themes__sheet-section-nav">
+						<NavTabs label="Details" selectedText="Details">
+							<NavItem path={ `/themes/${ this.props.theme.id }/details` } selected >Details</NavItem>
+							<NavItem path={ `/themes/${ this.props.theme.id }/documentation` }>Documentation</NavItem>
+							<NavItem path={ `/themes/${ this.props.theme.id }/support` }>Support</NavItem>
+						</NavTabs>
+					</SectionNav>
+					<Card className="themes__sheet-content">{ this.props.theme.description_long }</Card>
+				</div>
 			</Main>
 		);
 	}

@@ -1,3 +1,5 @@
+/** @ssr-ready **/
+
 /**
  * External Dependencies
  */
@@ -85,7 +87,7 @@ var NavTabs = React.createClass( {
 					</ul>
 
 					{
-						this.state.isDropdown &&
+						this.state.isDropdown && typeof( window ) === 'object' &&
 						window.innerWidth > MOBILE_PANEL_THRESHOLD &&
 						this.getDropdown()
 					}
