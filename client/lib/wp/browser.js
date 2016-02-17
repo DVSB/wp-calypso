@@ -40,6 +40,11 @@ if ( config.isEnabled( 'oauth' ) ) {
 	} );
 }
 
+// set global wpcom instance
+if ( config.isEnabled( 'expose-global-wpcom' ) ) {
+	window.wpcom = wpcom;
+}
+
 /**
  * Expose `wpcom`
  */
