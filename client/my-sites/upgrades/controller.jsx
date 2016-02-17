@@ -145,7 +145,7 @@ module.exports = {
 
 		analytics.pageView.record( '/domains/add/:site/google-apps', 'Domain Search > Domain Registration > Google Apps' );
 
-		ReactDom.render(
+		renderWithReduxStore(
 			(
 				<Main>
 					<CartData>
@@ -158,7 +158,8 @@ module.exports = {
 					</CartData>
 				</Main>
 			),
-			document.getElementById( 'primary' )
+			document.getElementById( 'primary' ),
+			context.store
 		);
 	},
 
@@ -195,13 +196,14 @@ module.exports = {
 			context.store
 		);
 
-		ReactDom.render(
+		renderWithReduxStore(
 			(
 				<CartData>
 					<SecondaryCart selectedSite={ sites.getSelectedSite() } />
 				</CartData>
 			),
-			document.getElementById( 'secondary' )
+			document.getElementById( 'secondary' ),
+			context.store
 		);
 	},
 
