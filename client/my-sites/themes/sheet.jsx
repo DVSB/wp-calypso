@@ -81,25 +81,32 @@ Man braid meditation meggings art party occupy kale chips, raw denim aesthetic p
 					<span className="themes__sheet-bar-title">Pineapple Fifteen</span>
 					<span className="themes__sheet-bar-tag">by Alpha and Omega</span>
 				</div>
-				<HeaderCake className="themes__sheet-action-bar" onClick={ this.onBackClick }>
-					<div className="themes__sheet-action-bar-container">
-						<span className="themes__sheet-action-bar-cost">{ this.props.theme.price }</span>
-						<Button secondary >{ i18n.translate( 'Download' ) }</Button>
-						<Button primary icon onClick={ this.onPrimaryClick }><Gridicon icon="checkmark"/>{ actionTitle }</Button>
+				<div className="themes__sheet-columns">
+					<div className="themes__sheet-column-left">
+						<HeaderCake className="themes__sheet-action-bar" onClick={ this.onBackClick }>
+							<div className="themes__sheet-action-bar-container">
+								<span className="themes__sheet-action-bar-cost">{ this.props.theme.price }</span>
+								<Button secondary >{ i18n.translate( 'Download' ) }</Button>
+								<Button primary icon onClick={ this.onPrimaryClick }><Gridicon icon="checkmark"/>{ actionTitle }</Button>
+							</div>
+						</HeaderCake>
+						<div className="themes__sheet-content">
+							<SectionNav className="themes__sheet-section-nav">
+								<NavTabs label="Details" selectedText="Details">
+									<NavItem path={ `/themes/${ this.props.theme.id }/details` } selected >Details</NavItem>
+									<NavItem path={ `/themes/${ this.props.theme.id }/documentation` }>Documentation</NavItem>
+									<NavItem path={ `/themes/${ this.props.theme.id }/support` }>Support</NavItem>
+								</NavTabs>
+							</SectionNav>
+							<Card className="themes__sheet-content">{ this.props.theme.description_long }</Card>
+						</div>
+					</div>
+					<div className="themes__sheet-column-right">
+						<Card className="themes_sheet-action-bar-spacer"/>
 						<div className="themes__sheet-screenshot">
 							<img className="themes__sheet-img" src="https://i2.wp.com/theme.wordpress.com/wp-content/themes/pub/orvis/screenshot.png?w=680" />
 						</div>
 					</div>
-				</HeaderCake>
-				<div className="themes__sheet-content-column">
-					<SectionNav className="themes__sheet-section-nav">
-						<NavTabs label="Details" selectedText="Details">
-							<NavItem path={ `/themes/${ this.props.theme.id }/details` } selected >Details</NavItem>
-							<NavItem path={ `/themes/${ this.props.theme.id }/documentation` }>Documentation</NavItem>
-							<NavItem path={ `/themes/${ this.props.theme.id }/support` }>Support</NavItem>
-						</NavTabs>
-					</SectionNav>
-					<Card className="themes__sheet-content">{ this.props.theme.description_long }</Card>
 				</div>
 			</Main>
 		);
