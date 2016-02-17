@@ -185,4 +185,12 @@
 		margin-right: 0;
 		margin-left: 0;
 	}
+
+	.themes__sheet-content-column {
+		margin: 0;
+		width: 100%;
+		margin-top: 550px;
+		display: flex;
+		flex-direction: column;
+	}
 }
