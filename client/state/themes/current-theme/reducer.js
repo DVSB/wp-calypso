@@ -8,6 +8,8 @@ import { fromJS } from 'immutable';
  */
 import ActionTypes from '../action-types';
 import { DESERIALIZE, SERIALIZE } from 'state/action-types';
+import { isValidStateWithSchema } from 'state/utils';
+import schema from './schema';
 
 export const initialState = fromJS( {
 	isActivating: false,
@@ -33,7 +35,7 @@ export default ( state = initialState, action ) => {
 		case ActionTypes.CLEAR_ACTIVATED_THEME:
 			return state.set( 'hasActivated', false );
 		case DESERIALIZE:
-			return fromJS( state );
+			return isValidStateWithSchema( state, schema ) ? fromJS( state ) : initialState;
 		case SERIALIZE:
 			return state.toJS();
 	}
