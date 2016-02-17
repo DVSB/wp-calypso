@@ -4,7 +4,7 @@
 	"hostname": "127.0.0.1",
 	"i18n_default_locale_slug": "en",
 	"wpcom_user_bootstrap": false,
-	"signup_url": "/start/desktop",
+	"signup_url": "/start",
 	"login_url": "/login",
 	"logout_url": "/logout",
 	"facebook_api_key": "249643311490",
