@@ -1,3 +1,5 @@
+/** @ssr-ready **/
+
 /**
  * External dependencies
  */
@@ -39,7 +41,7 @@ export default React.createClass( {
 
 	render() {
 		const { text = this.translate( 'Back' ), href, onClick, spacer } = this.props;
-		const windowWidth = window.innerWidth;
+		const windowWidth = global.window.innerWidth || 1024;
 		const hideText = windowWidth <= HIDE_BACK_CRITERIA.windowWidth && text.length >= HIDE_BACK_CRITERIA.characterLength || windowWidth <= 300;
 		const linkClasses = classNames( {
 			'header-cake__back': true,
