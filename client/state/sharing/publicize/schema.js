@@ -1,13 +1,3 @@
-export const fetchingConnectionsSchema = {
-	type: 'object',
-	patternProperties: {
-		'^\\d+$': {
-			type: [ 'boolean', 'undefined' ]
-		}
-	},
-	additionalProperties: false
-};
-
 export const connectionsSchema = {
 	type: 'object',
 	patternProperties: {

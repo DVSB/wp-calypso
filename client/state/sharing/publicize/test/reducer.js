@@ -56,7 +56,7 @@ describe( '#fetchingConnections()', () => {
 		after( () => {
 			console.warn.restore();
 		} );
-		it( 'should load valid persisted data', () => {
+		it( 'never loads persisted data', () => {
 			const persistedState = deepFreeze( {
 				2916284: false,
 				123456: undefined
@@ -64,26 +64,10 @@ describe( '#fetchingConnections()', () => {
 			const state = fetchingConnections( persistedState, {
 				type: DESERIALIZE
 			} );
-			expect( state ).to.eql( { 2916284: false, 123456: undefined } );
-		} );
-
-		it( 'should ignore loading data with invalid keys', () => {
-			const persistedState = deepFreeze( { foo: false } );
-			const state = fetchingConnections( persistedState, {
-				type: DESERIALIZE
-			} );
 			expect( state ).to.eql( {} );
 		} );
 
-		it( 'should ignore loading data with invalid values', () => {
-			const persistedState = deepFreeze( { 2916284: 'foo' } );
-			const state = fetchingConnections( persistedState, {
-				type: DESERIALIZE
-			} );
-			expect( state ).to.eql( {} );
-		} );
-
-		it( 'should persists data', () => {
+		it( 'never persists data', () => {
 			const state = deepFreeze( {
 				2916284: false,
 				123456: undefined
@@ -91,7 +75,7 @@ describe( '#fetchingConnections()', () => {
 			const persistedState = fetchingConnections( state, {
 				type: SERIALIZE
 			} );
-			expect( persistedState ).to.eql( state );
+			expect( persistedState ).to.eql( {} );
 		} );
 	} );
 } );

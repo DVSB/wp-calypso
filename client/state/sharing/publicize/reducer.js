@@ -16,7 +16,6 @@ import {
 } from 'state/action-types';
 import { isValidStateWithSchema } from 'state/utils';
 import {
-	fetchingConnectionsSchema,
 	connectionsSchema,
 	connectionsBySiteIdSchema
 } from './schema';
@@ -41,11 +40,8 @@ export function fetchingConnections( state = {}, action ) {
 				[ siteId ]: PUBLICIZE_CONNECTIONS_REQUEST === type
 			} );
 		case SERIALIZE:
-			return state;
+			return {};
 		case DESERIALIZE:
-			if ( isValidStateWithSchema( state, fetchingConnectionsSchema ) ) {
-				return state;
-			}
 			return {};
 	}
 	return state;
@@ -65,7 +61,10 @@ export function connections( state = {}, action ) {
 		case SERIALIZE:
 			return state;
 		case DESERIALIZE:
-			return isValidStateWithSchema( state, connectionsSchema ) ? state : {};
+			if ( isValidStateWithSchema( state, connectionsSchema ) ) {
+				return state;
+			}
+			return {};
 	}
 
 	return state;
