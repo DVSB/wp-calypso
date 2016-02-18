@@ -22,11 +22,6 @@ var DropdownItem = require( 'components/select-dropdown/item' ),
 var noop = () => {};
 
 /**
- * Internal variables
- */
-//var _instance = 1;
-
-/**
  * SelectDropdown
  */
 var SelectDropdown = React.createClass( {
@@ -48,6 +43,10 @@ var SelectDropdown = React.createClass( {
 				path: React.PropTypes.string
 			} )
 		)
+	},
+
+	statics: {
+		instances: 0
 	},
 
 	getDefaultProps: function() {
@@ -72,8 +71,9 @@ var SelectDropdown = React.createClass( {
 	},
 
 	componentWillMount: function() {
-		//this.id = _instance;
-		//_instance++;
+		this.setState( {
+			instanceId: ++SelectDropdown.instances
+		} );
 	},
 
 	componentWillReceiveProps: function() {
@@ -133,14 +133,14 @@ var SelectDropdown = React.createClass( {
 			if ( ! item ) {
 				return (
 					<DropdownSeparator
-						key={ 'dropdown-separator-' + this.id + '-' + index }
+						key={ 'dropdown-separator-' + this.state.instanceId + '-' + index }
 					/>
 				);
 			}
 
 			let dropdownItem = (
 				<DropdownItem
-					key={ 'dropdown-item-' + this.id + '-' + item.value }
+					key={ 'dropdown-item-' + this.state.instanceId + '-' + item.value }
 					ref={ 'item-' + refIndex }
 					selected={ this.state.selected === item.value }
 					onClick={ this.selectItem.bind( this, item ) }
@@ -184,13 +184,13 @@ var SelectDropdown = React.createClass( {
 					onKeyDown={ this.navigateItem }
 					tabIndex={ this.props.tabIndex || 0 }
 					aria-haspopup="true"
-					aria-owns={ 'select-submenu-' + this.id }
-					aria-controls={ 'select-submenu-' + this.id }
+					aria-owns={ 'select-submenu-' + this.state.instanceId }
+					aria-controls={ 'select-submenu-' + this.state.instanceId }
 					aria-expanded={ this.state.isOpen }
 					onClick={ this.toggleDropdown }
 				>
 					<div
-						id={ 'select-dropdown-' + this.id }
+						id={ 'select-dropdown-' + this.state.instanceId }
 						className="select-dropdown__header"
 					>
 						<span className="select-dropdown__header-text">
@@ -203,10 +203,10 @@ var SelectDropdown = React.createClass( {
 					</div>
 
 					<ul
-						id={ 'select-submenu-' + this.id }
+						id={ 'select-submenu-' + this.state.instanceId }
 						className="select-dropdown__options"
 						role="menu"
-						aria-labelledby={ 'select-dropdown-' + this.id }
+						aria-labelledby={ 'select-dropdown-' + this.state.instanceId }
 						aria-expanded={ this.state.isOpen }
 					>
 						{ this.dropdownOptions() }
