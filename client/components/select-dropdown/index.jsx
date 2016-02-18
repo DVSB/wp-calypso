@@ -1,3 +1,5 @@
+/** @ssr-ready **/
+
 /**
  * External Dependencies
  */
@@ -22,7 +24,7 @@ var noop = () => {};
 /**
  * Internal variables
  */
-var _instance = 1;
+//var _instance = 1;
 
 /**
  * SelectDropdown
@@ -70,8 +72,8 @@ var SelectDropdown = React.createClass( {
 	},
 
 	componentWillMount: function() {
-		this.id = _instance;
-		_instance++;
+		//this.id = _instance;
+		//_instance++;
 	},
 
 	componentWillReceiveProps: function() {
