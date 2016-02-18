@@ -21,7 +21,7 @@ import { isMobile } from 'lib/viewport';
  */
 var	SEARCH_DEBOUNCE_MS = 300;
 
-export const Search = React.createClass( {
+const Search = React.createClass( {
 
 	displayName: 'Search',
 
@@ -311,4 +311,4 @@ export const Search = React.createClass( {
 	}
 } );
 
-export default Search;
+module.exports = Search;
