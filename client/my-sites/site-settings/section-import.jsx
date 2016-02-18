@@ -9,6 +9,7 @@ import includes from 'lodash/includes';
  */
 import CompactCard from 'components/card/compact';
 import EmptyContent from 'components/empty-content';
+import ExternalLink from 'components/external-link';
 import GhostImporter from 'my-sites/importer/importer-ghost';
 import ImporterStore, { getState as getImporterState } from 'lib/importer/store';
 import Interval, { EVERY_FIVE_SECONDS } from 'lib/interval';
@@ -135,6 +136,11 @@ export default React.createClass( {
 				{ this.getImports( SQUARESPACE ).map( ( importerStatus, key ) =>
 					<SquarespaceImporter { ...{ key, importerStatus } } /> ) }
 
+				<CompactCard>
+					<ExternalLink icon={ true } href={ adminUrl + 'import.php' } target="_blank">
+						{ this.translate( 'Other importers') }
+					</ExternalLink>
+				</CompactCard>
 			</div>
 		);
 	}
