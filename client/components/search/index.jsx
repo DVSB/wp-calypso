@@ -1,3 +1,5 @@
+/** @ssr-ready **/
+
 /**
  * External dependencies
  */
@@ -17,8 +19,8 @@ import { isMobile } from 'lib/viewport';
 /**
  * Internal variables
  */
-var _instance = 1,
-	SEARCH_DEBOUNCE_MS = 300;
+//var _instance = 1,
+var	SEARCH_DEBOUNCE_MS = 300;
 
 module.exports = React.createClass( {
 
@@ -68,11 +70,8 @@ module.exports = React.createClass( {
 	},
 
 	componentWillMount: function() {
-		this.id = _instance;
-		_instance++;
-		this.onSearch = this.props.delaySearch
-			? debounce( this.props.onSearch, this.props.delayTimeout )
-			: this.props.onSearch;
+		//this.id = _instance;
+		//_instance++;
 	},
 
 	componentWillReceiveProps: function( nextProps ) {
@@ -116,6 +115,10 @@ module.exports = React.createClass( {
 	},
 
 	componentDidMount: function() {
+		this.onSearch = this.props.delaySearch
+			? debounce( this.props.onSearch, this.props.delayTimeout )
+			: this.props.onSearch;
+
 		if ( this.props.autoFocus ) {
 			this.focus();
 		}
