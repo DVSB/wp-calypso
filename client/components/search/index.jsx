@@ -19,12 +19,15 @@ import { isMobile } from 'lib/viewport';
 /**
  * Internal variables
  */
-//var _instance = 1,
 var	SEARCH_DEBOUNCE_MS = 300;
 
-module.exports = React.createClass( {
+export const Search = React.createClass( {
 
 	displayName: 'Search',
+
+	statics: {
+		instances: 0
+	},
 
 	propTypes: {
 		additionalClasses: React.PropTypes.string,
@@ -70,8 +73,9 @@ module.exports = React.createClass( {
 	},
 
 	componentWillMount: function() {
-		//this.id = _instance;
-		//_instance++;
+		this.setState( {
+			instanceId: ++Search.instances
+		} );
 	},
 
 	componentWillReceiveProps: function( nextProps ) {
@@ -258,13 +262,13 @@ module.exports = React.createClass( {
 						? this._keyListener.bind( this, 'openSearch' )
 						: null
 					}
-					aria-controls={ 'search-component-' + this.id }
+					aria-controls={ 'search-component-' + this.state.instanceId }
 					aria-label={ this.translate( 'Open Search', { context: 'button label' } ) }>
 				<Gridicon icon="search" className="search-open__icon"/>
 				</div>
 				<input
 					type="search"
-					id={ 'search-component-' + this.id }
+					id={ 'search-component-' + this.state.instanceId }
 					className="search__input"
 					placeholder={ placeholder }
 					role="search"
@@ -306,3 +310,5 @@ module.exports = React.createClass( {
 		}
 	}
 } );
+
+export default Search;
