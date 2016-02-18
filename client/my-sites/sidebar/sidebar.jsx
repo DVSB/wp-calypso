@@ -3,11 +3,11 @@
  */
 var analytics = require( 'analytics' ),
 	classNames = require( 'classnames' ),
-	contains = require( 'lodash/collection/contains' ),
+	includes = require( 'lodash/includes' ),
 	debug = require( 'debug' )( 'calypso:my-sites:sidebar' ),
 	has = require( 'lodash/object/has' ),
 	React = require( 'react' ),
-	startsWith = require( 'lodash/string/startsWith' );
+	startsWith = require( 'lodash/startsWith' );
 
 /**
  * Internal dependencies
